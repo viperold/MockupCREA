@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INACAP Projects - Plataforma de Colaboración Estudiantil</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">INACAP Projects</div>
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn btn-secondary" onclick="showLogin()">Iniciar Sesión</button>
+                    <button class="btn btn-primary" onclick="showRegister()">Registrarse</button>
+                </div>
+                <div class="user-menu hidden" id="userMenu">
+                    <span id="userName">Usuario</span>
+                    <button class="btn btn-secondary" onclick="logout()">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1>Conecta, Colabora, Crea</h1>
+                <p>La plataforma donde estudiantes de INACAP se unen para crear proyectos increíbles y desarrollar habilidades profesionales</p>
+                <button class="btn btn-primary" onclick="showRegister()">Únete Ahora</button>
+            </section>
+
+            <!-- Login/Register Forms -->
+            <div id="loginForm" class="form-container hidden">
+                <h2 style="text-align: center; color: var(--primary-blue); margin-bottom: 2rem;">Iniciar Sesión</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Iniciar Sesión</button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem;">
+                    ¿No tienes cuenta? <a href="#" onclick="showRegister()" style="color: var(--secondary-blue);">Regístrate aquí</a>
+                </p>
+            </div>
+
+            <div id="registerForm" class="form-container hidden">
+                <h2 style="text-align: center; color: var(--primary-blue); margin-bottom: 2rem;">Registro</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Carrera</label>
+                        <select class="form-select" required>
+                            <option value="">Selecciona tu carrera</option>
+                            <option value="informatica">Ingeniería en Informática</option>
+                            <option value="industrial">Ingeniería Industrial</option>
+                            <option value="construccion">Construcción</option>
+                            <option value="mecanica">Mecánica</option>
+                            <option value="electronica">Electrónica</option>
+                            <option value="administracion">Administración</option>
+                            <option value="diseno">Diseño</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Crear Cuenta</button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem;">
+                    ¿Ya tienes cuenta? <a href="#" onclick="showLogin()" style="color: var(--secondary-blue);">Inicia sesión aquí</a>
+                </p>
+            </div>
+
+            <!-- Main Dashboard -->
+            <div id="dashboard" class="hidden">
+                <!-- User Profile -->
+                <div class="user-profile">
+                    <div class="user-avatar" id="userAvatar">JP</div>
+                    <div class="user-name" id="displayName">Juan Pérez</div>
+                    <div class="user-career" id="displayCareer">Ingeniería en Informática</div>
+                    <div class="user-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Proyectos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Colaboraciones</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Habilidades</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="nav-tabs">
+                    <button class="nav-tab active" onclick="showTab('projects')">Explorar Proyectos</button>
+                    <button class="nav-tab" onclick="showTab('myProjects')">Mis Proyectos</button>
+                    <button class="nav-tab" onclick="showTab('createProject')">Crear Proyecto</button>
+                    <button class="nav-tab" onclick="showTab('services')">Servicios</button>
+                </div>
+
+                <!-- Projects Section -->
+                <div id="projects" class="content-section active">
+                    <h2 style="color: var(--primary-blue); margin-bottom: 2rem;">Proyectos Disponibles</h2>
+                    <div class="projects-grid" id="projectsGrid"></div>
+                </div>
+
+                <!-- My Projects Section -->
+                <div id="myProjects" class="content-section">
+                    <h2 style="color: var(--primary-blue); margin-bottom: 2rem;">Mis Proyectos</h2>
+                    <div class="projects-grid" id="myProjectsGrid"></div>
+                </div>
+
+                <!-- Create Project Section -->
+                <div id="createProject" class="content-section">
+                    <div class="form-container">
+                        <h2 style="text-align: center; color: var(--primary-blue); margin-bottom: 2rem;">Crear Nuevo Proyecto</h2>
+                        <form onsubmit="handleCreateProject(event)">
+                            <div class="form-group">
+                                <label class="form-label">Título del Proyecto</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Descripción</label>
+                                <textarea class="form-textarea" required placeholder="Describe tu proyecto, qué necesitas y qué ofreces..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tipo de Proyecto</label>
+                                <select class="form-select" required>
+                                    <option value="">Selecciona el tipo</option>
+                                    <option value="academico">Proyecto Académico</option>
+                                    <option value="personal">Proyecto Personal</option>
+                                    <option value="emprendimiento">Emprendimiento</option>
+                                    <option value="investigacion">Investigación</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Habilidades Necesarias</label>
+                                <input type="text" class="form-input" placeholder="Ej: JavaScript, Diseño, Marketing...">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Duración Estimada</label>
+                                <select class="form-select" required>
+                                    <option value="">Selecciona duración</option>
+                                    <option value="1-2-semanas">1-2 semanas</option>
+                                    <option value="1-mes">1 mes</option>
+                                    <option value="2-3-meses">2-3 meses</option>
+                                    <option value="mas-3-meses">Más de 3 meses</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Crear Proyecto</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Services Section -->
+                <div id="services" class="content-section">
+                    <h2 style="color: var(--primary-blue); margin-bottom: 2rem;">Servicios Disponibles</h2>
+                    <div class="projects-grid" id="servicesGrid"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
