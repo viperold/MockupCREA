@@ -4,3 +4,10 @@ Framework:
 │  React
 Variant:
 │  TypeScript + SWC
+
+
+
+Esta es la estructura de mi proyecto.
+
+> Index.html (Inicio de mi Proyecto)
+> Ubicación para obtener el Css/Tailwind: "src/index_style.css"
