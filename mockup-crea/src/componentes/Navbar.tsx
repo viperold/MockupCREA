@@ -43,7 +43,7 @@ function Navbar() {
             </button>
 
             {/* Campana de notificaciones */}
-            <div className="notification-container">
+            <div className="notification-container group relative">
               <button 
                 className="notification-btn"
                 onClick={() => setShowNotifications(!showNotifications)}
@@ -52,28 +52,26 @@ function Navbar() {
                 <span className="notification-dot"></span>
               </button>
               
-              {/* Dropdown de notificaciones */}
-              {showNotifications && (
-                <div className="notification-dropdown">
-                  <div className="dropdown-header">Notificaciones</div>
-                  <div className="notification-item">
-                    <div className="notification-text">Nuevo mensaje en proyecto "App Inventario"</div>
-                    <div className="notification-time">Hace 5 min</div>
-                  </div>
-                  <div className="notification-item">
-                    <div className="notification-text">Te invitaron a colaborar en "Sistema POS"</div>
-                    <div className="notification-time">Hace 1 hora</div>
-                  </div>
-                  <div className="notification-item">
-                    <div className="notification-text">Nuevo proyecto disponible en tu área</div>
-                    <div className="notification-time">Hace 2 horas</div>
-                  </div>
+              {/* Dropdown de notificaciones - aparece con hover */}
+              <div className="notification-dropdown opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-2">
+                <div className="dropdown-header">Notificaciones</div>
+                <div className="notification-item hover:bg-gray-50 transition-colors duration-200">
+                  <div className="notification-text">Nuevo mensaje en proyecto "App Inventario"</div>
+                  <div className="notification-time">Hace 5 min</div>
                 </div>
-              )}
+                <div className="notification-item hover:bg-gray-50 transition-colors duration-200">
+                  <div className="notification-text">Te invitaron a colaborar en "Sistema POS"</div>
+                  <div className="notification-time">Hace 1 hora</div>
+                </div>
+                <div className="notification-item hover:bg-gray-50 transition-colors duration-200">
+                  <div className="notification-text">Nuevo proyecto disponible en tu área</div>
+                  <div className="notification-time">Hace 2 horas</div>
+                </div>
+              </div>
             </div>
 
             {/* Perfil de usuario */}
-            <div className="user-container">
+            <div className="user-container group relative">
               <button 
                 className="user-btn"
                 onClick={() => setShowUserMenu(!showUserMenu)}
@@ -81,23 +79,21 @@ function Navbar() {
                 <div className="user-avatar-nav">JP</div>
               </button>
               
-              {/* Dropdown del usuario */}
-              {showUserMenu && (
-                <div className="user-dropdown">
-                  <div className="dropdown-header">
-                    <div className="user-info-dropdown">
-                      <div className="user-name">Juan Pérez</div>
-                      <div className="user-email">juan.perez@inacap.cl</div>
-                    </div>
+              {/* Dropdown del usuario - aparece con hover */}
+              <div className="user-dropdown opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-2">
+                <div className="dropdown-header">
+                  <div className="user-info-dropdown">
+                    <div className="user-name">Juan Pérez</div>
+                    <div className="user-email">juan.perez@inacap.cl</div>
                   </div>
-                  <div className="dropdown-divider"></div>
-                  <button className="dropdown-item">👤 Mi Perfil</button>
-                  <button className="dropdown-item">⚙️ Configuración</button>
-                  <button className="dropdown-item">📊 Mis Estadísticas</button>
-                  <div className="dropdown-divider"></div>
-                  <button className="dropdown-item logout">🚪 Cerrar Sesión</button>
                 </div>
-              )}
+                <div className="dropdown-divider"></div>
+                <button className="dropdown-item hover:bg-gray-50 transition-colors duration-200">👤 Mi Perfil</button>
+                <button className="dropdown-item hover:bg-gray-50 transition-colors duration-200">⚙️ Configuración</button>
+                <button className="dropdown-item hover:bg-gray-50 transition-colors duration-200">📊 Mis Estadísticas</button>
+                <div className="dropdown-divider"></div>
+                <button className="dropdown-item logout hover:bg-red-50 transition-colors duration-200">🚪 Cerrar Sesión</button>
+              </div>
             </div>
           </div>
         </div>
