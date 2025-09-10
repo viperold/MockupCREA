@@ -198,20 +198,49 @@ function Navbar() {
         {/* Menú móvil */}
         {showMobileMenu && (
           <div className="mobile-menu">
-            {navItems.map((item) => (
-              <button
-                key={item}
-                onClick={() => {
-                  // En móvil, solo cerramos el menú sin cambiar el estado visual del navbar
-                  closeAllMenus();
-                  // Aquí puedes agregar lógica de navegación sin cambiar activeTab
-                  console.log(`Navegando a: ${item}`);
-                }}
-                className={`mobile-nav-link`}
-              >
-                {item}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              // Función para obtener el icono correspondiente a cada item
+              const getItemIcon = (itemName: string) => {
+                switch(itemName) {
+                  case 'Inicio':
+                    return (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="inline mr-2">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                      </svg>
+                    );
+                  case 'Proyectos':
+                    return (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="inline mr-2">
+                        <path d="M20 6h-2.5l-1.1-1.4c-.3-.4-.7-.6-1.2-.6H8.8c-.5 0-.9.2-1.2.6L6.5 6H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/>
+                      </svg>
+                    );
+                  case 'Foro':
+                    return (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="inline mr-2">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                      </svg>
+                    );
+                  default:
+                    return null;
+                }
+              };
+
+              return (
+                <button
+                  key={item}
+                  onClick={() => {
+                    // En móvil, solo cerramos el menú sin cambiar el estado visual del navbar
+                    closeAllMenus();
+                    // Aquí puedes agregar lógica de navegación sin cambiar activeTab
+                    console.log(`Navegando a: ${item}`);
+                  }}
+                  className={`mobile-nav-link`}
+                >
+                  {getItemIcon(item)}
+                  {item}
+                </button>
+              );
+            })}
             <div className="mobile-menu-divider"></div>
             <button 
               className="mobile-nav-link new-project"
@@ -220,7 +249,10 @@ function Navbar() {
                 // Aquí puedes agregar lógica para "Nuevo Proyecto" en móvil
               }}
             >
-              + Nuevo Proyecto
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="inline mr-2">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+              Nuevo Proyecto
             </button>
           </div>
         )}
