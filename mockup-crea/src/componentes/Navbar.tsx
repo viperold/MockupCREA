@@ -1,13 +1,18 @@
 // src/componentes/Navbar.tsx
 import { useState, useEffect } from 'react';
 
-function Navbar() {
-  const [activeTab, setActiveTab] = useState('Inicio');
+// Definimos las props que acepta el componente Navbar
+interface NavbarProps {
+  activeSection: string;
+  setActiveSection: (section: string) => void;
+}
+
+function Navbar({ activeSection, setActiveSection }: NavbarProps) {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  const navItems = ['Inicio', 'Proyectos', 'Foro'];
+  const navItems = ['Inicio', 'Dashboard', 'Proyectos', 'Foro'];
 
   // Función para cerrar todos los menús
   const closeAllMenus = () => {
@@ -72,8 +77,8 @@ function Navbar() {
               {navItems.map((item) => (
                 <button
                   key={item}
-                  onClick={() => setActiveTab(item)}
-                  className={`nav-link ${activeTab === item ? 'active' : ''}`}
+                  onClick={() => setActiveSection(item)}
+                  className={`nav-link ${activeSection === item ? 'active' : ''}`}
                 >
                   {item}
                 </button>
@@ -208,6 +213,12 @@ function Navbar() {
                         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                       </svg>
                     );
+                  case 'Dashboard':
+                    return (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="inline mr-2">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                      </svg>
+                    );
                   case 'Proyectos':
                     return (
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="inline mr-2">
@@ -229,10 +240,9 @@ function Navbar() {
                 <button
                   key={item}
                   onClick={() => {
-                    // En móvil, solo cerramos el menú sin cambiar el estado visual del navbar
+                    // En móvil, solo cerramos el menú y navegamos
                     closeAllMenus();
-                    // Aquí puedes agregar lógica de navegación sin cambiar activeTab
-                    console.log(`Navegando a: ${item}`);
+                    setActiveSection(item);
                   }}
                   className={`mobile-nav-link`}
                 >

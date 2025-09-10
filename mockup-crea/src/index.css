@@ -334,3 +334,127 @@ body {
 .hidden {
     display: none !important;
 }
+
+/* Estilos para las secciones de contenido */
+.inicio-content, .proyectos-content, .foro-content {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.inicio-content h1, .proyectos-content h1, .foro-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.inicio-content p, .proyectos-content p, .foro-content p {
+  font-size: 1.2rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+/* Estilos para las tarjetas de bienvenida */
+.welcome-cards, .project-grid, .forum-topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.welcome-card, .topic-item {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.welcome-card:hover, .topic-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-card h3, .topic-item h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.welcome-card p, .topic-item p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+  text-align: left;
+}
+
+/* Estilos específicos para proyectos */
+.project-grid .project-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.project-grid .project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.project-grid .project-card h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.project-grid .project-card p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+  text-align: left;
+}
+
+/* Estilos para los estados de proyectos */
+.status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status.active {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status.completed {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .welcome-cards, .project-grid, .forum-topics {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .inicio-content h1, .proyectos-content h1, .foro-content h1 {
+    font-size: 2rem;
+  }
+  
+  .welcome-card, .topic-item, .project-grid .project-card {
+    padding: 1.5rem;
+  }
+}
