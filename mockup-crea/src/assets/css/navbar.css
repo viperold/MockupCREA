@@ -6,6 +6,10 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .modern-navbar-content {
@@ -36,6 +40,7 @@
     justify-content: center;
     font-weight: bold;
     font-size: 14px;
+    user-select: none;
 }
 
 .navbar-nav {
@@ -53,6 +58,7 @@
     cursor: pointer;
     border-radius: 6px;
     transition: all 0.2s ease;
+    user-select: none;
 }
 
 .nav-link:hover {
@@ -82,6 +88,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
+    user-select: none;
 }
 
 .new-project-btn:hover {
@@ -96,12 +103,16 @@
     background: transparent;
     border: none;
     color: #9ca3af;
-    font-size: 18px;
     cursor: pointer;
     padding: 0.5rem;
-    border-radius: 6px;
+    border-radius: 50%;
     position: relative;
     transition: all 0.2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .notification-btn:hover {
@@ -109,14 +120,10 @@
     color: white;
 }
 
-.notification-dot {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 8px;
-    height: 8px;
-    background: #ef4444;
-    border-radius: 50%;
+.notification-btn.active {
+    background: transparent;
+    border: 2px solid #6366f1;
+    color: #6366f1;
 }
 
 .notification-dropdown {
@@ -142,12 +149,27 @@
     border: none;
     cursor: pointer;
     padding: 2px;
-    border-radius: 6px;
+    border-radius: 50%;
     transition: all 0.2s ease;
+    outline: none;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .user-btn:hover {
     background: #374151;
+}
+
+.user-btn:focus {
+    outline: none;
+    background: transparent;
+}
+
+.user-btn:active {
+    background: transparent;
 }
 
 .user-avatar-nav {
@@ -161,6 +183,7 @@
     font-size: 12px;
     color: white;
     font-weight: bold;
+    user-select: none;
 }
 
 .user-dropdown {
@@ -181,6 +204,7 @@
     font-weight: 600;
     color: #f9fafb;
     font-size: 14px;
+    user-select: none;
 }
 
 .user-info-dropdown {
@@ -191,12 +215,14 @@
     font-weight: 600;
     color: #f9fafb;
     font-size: 14px;
+    user-select: none;
 }
 
 .user-email {
     font-size: 12px;
     color: #9ca3af;
     margin-top: 2px;
+    user-select: none;
 }
 
 .dropdown-divider {
@@ -218,6 +244,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    user-select: none;
 }
 
 .dropdown-item:hover {
@@ -253,13 +280,97 @@
     font-size: 14px;
     color: #d1d5db;
     margin-bottom: 4px;
+    user-select: none;
 }
 
 .notification-time {
     font-size: 12px;
     color: #9ca3af;
+    user-select: none;
 }
 
+/* === MENÚ MÓVIL === */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.mobile-menu-btn:hover {
+    background: #374151;
+    color: white;
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: #1f2937;
+    border-top: 1px solid #374151;
+    padding: 1rem 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.mobile-nav-link:hover {
+    background: #374151;
+    color: white;
+}
+
+.mobile-nav-link.active {
+    background: #374151;
+    color: white;
+    border-left: 3px solid #6366f1;
+}
+
+.mobile-menu-divider {
+    height: 1px;
+    background: #374151;
+    margin: 0.5rem 0;
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablets y pantallas medianas (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .navbar-left {
+        gap: 1.5rem;
+    }
+    
+    .new-project-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 13px;
+    }
+}
+
+/* Tablets pequeñas (576px - 768px) */
 @media (max-width: 768px) {
     .navbar-left {
         gap: 1rem;
@@ -269,6 +380,16 @@
         display: none;
     }
     
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .mobile-menu {
+        display: flex;
+    }
+    
     .navbar-right {
         gap: 0.5rem;
     }
@@ -276,5 +397,135 @@
     .new-project-btn {
         padding: 0.4rem 0.8rem;
         font-size: 12px;
+    }
+    
+    .notification-btn, .user-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .user-avatar-nav {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+    }
+}
+
+/* Móviles (hasta 576px) */
+@media (max-width: 576px) {
+    .modern-navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .navbar-left {
+        gap: 0.75rem;
+    }
+    
+    .navbar-right {
+        gap: 0.25rem;
+    }
+    
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    .new-project-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 11px;
+        border-radius: 4px;
+    }
+    
+    .notification-btn, .user-btn {
+        width: 32px;
+        height: 32px;
+        padding: 0.25rem;
+    }
+    
+    .user-avatar-nav {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+    
+    /* Ajustar dropdowns para móviles */
+    .notification-dropdown {
+        width: 280px;
+        right: -10px;
+    }
+    
+    .user-dropdown {
+        width: 180px;
+        right: -10px;
+    }
+    
+    /* Mejorar menú móvil */
+    .mobile-menu {
+        left: -10px;
+        right: -10px;
+    }
+    
+    .mobile-nav-link {
+        font-size: 15px;
+        padding: 0.875rem 1rem;
+    }
+}
+
+/* Móviles muy pequeños (hasta 375px) */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 8px;
+    }
+    
+    .navbar-left {
+        gap: 0.5rem;
+    }
+    
+    .new-project-btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 10px;
+    }
+    
+    .notification-btn, .user-btn {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .user-avatar-nav {
+        width: 20px;
+        height: 20px;
+        font-size: 9px;
+    }
+    
+    .logo-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+    }
+    
+    .notification-dropdown {
+        width: 260px;
+        right: -20px;
+    }
+    
+    .user-dropdown {
+        width: 160px;
+        right: -20px;
+    }
+    
+    /* Menú móvil en pantallas muy pequeñas */
+    .mobile-menu {
+        left: -8px;
+        right: -8px;
+    }
+    
+    .mobile-nav-link {
+        font-size: 14px;
+        padding: 0.75rem 1rem;
     }
 }
