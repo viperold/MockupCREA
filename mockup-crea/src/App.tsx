@@ -2,16 +2,16 @@ import Navbar from './componentes/Navbar'
 import Footer from './componentes/Footer'
 import './index.css'
 import './assets/css/navbar.css'
-
+import './assets/css/footer.css'
 // Le digo a JavaScript: "Oye, voy a crear una función que se llama MiNuevoComponente"
 function App() {
 
   // La función devuelve (entrega) código HTML cuando alguien la use
   // Cuando alguien use esta receta, entrégale esto:
   // Es como decir "el resultado final es...
-  
+
   return (
-    <div>
+    <div className="app-container">
       <Navbar />
         <header>
           <div className="container">

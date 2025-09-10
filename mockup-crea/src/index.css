@@ -25,6 +25,12 @@ body {
     color: var(--dark-gray);
 }
 
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -93,6 +99,7 @@ body {
 
 .main-content {
     padding: 2rem 0;
+    flex: 1;
 }
 
 .hero {
