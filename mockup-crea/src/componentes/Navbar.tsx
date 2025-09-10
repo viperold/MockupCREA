@@ -192,7 +192,7 @@ function Navbar() {
             ))}
             <div className="mobile-menu-divider"></div>
             <button 
-              className="mobile-nav-link"
+              className="mobile-nav-link new-project"
               onClick={() => {
                 closeAllMenus();
                 // Aquí puedes agregar lógica para "Nuevo Proyecto" en móvil
